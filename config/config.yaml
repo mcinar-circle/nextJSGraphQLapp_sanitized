@@ -1,0 +1,20 @@
+# config.yaml
+
+database:
+  dbUser: "{{ssm:/prod/db/user}}"
+  dbPassword: "{{ssm:/prod/db/password}}"
+  dbHost: "{{secretsmanager:/prod/db/host}}"
+  dbPort: "{{secretsmanager:/prod/db/port}}"
+
+api:
+  paymentGatewayKey: "Fg7H2yLdM8VpQz3N6RbXtPWaK4CsJ9T5"  # ❌ Hardcoded API key (security risk)
+  smsProviderKey: "X1Y2Z3A4B5C6D7E8F9G0H1I2J3K4L5M6"  # ❌ Not used but still a security risk
+  internalServiceToken: "{{secretsmanager:/prod/api/internalService}}"  # ✅ Properly stored API key
+  analyticsIntegrationKey: "{{ssm:/prod/api/analytics}}"  # ✅ Properly stored API key
+
+thirdParty:
+  awsAccessKey: "{{secretsmanager:/aws/access-key}}"
+  awsSecretKey: "{{ssm:/aws/secret-key}}"
+  analyticsKey: "{{secretsmanager:/analytics/key}}"
+  smsServiceKey: "{{ssm:/sms/service-key}}"
+

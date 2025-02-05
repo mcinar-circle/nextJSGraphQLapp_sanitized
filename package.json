@@ -1,0 +1,29 @@
+{
+    "name": "secure-training-nextjs",
+    "version": "1.0.0",
+    "description": "GraphQL Security Training with Next.js & Apollo",
+    "main": "pages/api/graphql.ts",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start"
+    },
+    "dependencies": {
+      "next": "latest",
+      "react": "^18.2.0",
+      "react-dom": "^18.2.0",
+      "apollo-server-micro": "^3.7.0",
+      "graphql": "^16.6.0",
+      "jsonwebtoken": "^9.0.0",
+      "@apollo/client": "^3.7.0"
+    },
+    "devDependencies": {
+      "typescript": "^4.9.4",
+      "@types/node": "^18.11.9",
+      "@types/react": "^18.0.24"
+    },
+    "type": "module",
+    "author": "Your Team",
+    "license": "MIT"
+  }
+  

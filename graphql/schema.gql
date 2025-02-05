@@ -1,0 +1,28 @@
+type User {
+  username: String!
+  balance: String!
+  taxID: String! # ❌ Sensitive data exposed
+}
+
+type Transaction {
+  date: String!
+  description: String!
+  amount: String!
+  status: String!
+}
+
+type AccountSettings {
+  notifications: Boolean!
+  twoFactorAuth: Boolean!
+}
+
+type Query {
+  fetchUserDetails(username: String!): User # ❌ No authentication check
+  fetchTransactionHistory(username: String!): [Transaction] # ❌ No authentication check
+  fetchLoanDetails(username: String!): String # ✅ Secure operation
+  fetchAccountSettings(username: String!): AccountSettings # ✅ Secure operation
+}
+
+type Mutation {
+  updateUserProfile(username: String!, newProfileData: String!): String # ❌ Any admin can edit any user
+}
