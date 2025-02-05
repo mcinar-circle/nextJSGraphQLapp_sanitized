@@ -1,5 +1,8 @@
 import { useQuery, useMutation, gql } from '@apollo/client';
 
+import { AccountDetails } from './AccountDetails.tsx';
+import { UserDetails } from './UserDetails.tsx';
+
 const FETCH_USER_PROFILE = gql`
   query fetchUserDetails($username: String!) {
     fetchUserDetails(username: $username) {
@@ -33,13 +36,12 @@ const UserProfile = ({ username, loggedInUser, role }: { username: string; logge
 
     return (
         <div>
-            <h2>User Profile</h2>
-            <p>Username: {data.fetchUserDetails.username}</p>
-            <p>Balance: {data.fetchUserDetails.balance}</p>
-            <p>Tax ID: {data.fetchUserDetails.taxID} {/* ❌ Sensitive information exposed */}</p>
-            {role === "ADMIN" && username === loggedInUser && (
-                <button onClick={handleEditProfile}>Edit Profile</button> // ✅ Frontend enforces restriction
-            )}
+            <h2>User Details</h2>
+            <UserDetails username={''} />
+
+
+            <h2>Account Details</h2>
+            <Account username={''} role={''} />
         </div>
     );
 };

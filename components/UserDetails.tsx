@@ -10,7 +10,7 @@ const FETCH_USER_DETAILS = gql`
   }
 `;
 
-const UserDetails = ({ username }: { username: string }) => {
+export const UserDetails = ({ username }: { username: string }) => {
     const { data, loading, error } = useQuery(FETCH_USER_DETAILS, {
         variables: { username },
     });
@@ -20,10 +20,13 @@ const UserDetails = ({ username }: { username: string }) => {
 
     return (
         <div>
-            <h2>User Details</h2>
+
             <p>Username: {data.fetchUserDetails.username}</p>
             <p>Balance: {data.fetchUserDetails.balance}</p>
             <p>Tax ID: {data.fetchUserDetails.taxID} {/* ❌ Sensitive information exposed */}</p>
+            {role === "ADMIN" && username === loggedInUser && (
+                <button onClick={handleEditProfile}>Edit Profile</button> // ✅ Frontend enforces restriction
+            )}
         </div>
     );
 };

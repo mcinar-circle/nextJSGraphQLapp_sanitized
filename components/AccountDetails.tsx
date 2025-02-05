@@ -9,7 +9,7 @@ const FETCH_ACCOUNT_SETTINGS = gql`
   }
 `;
 
-const Account = ({ username, role }: { username: string; role: string }) => {
+export const AccountDetails = ({ username, role }: { username: string; role: string }) => {
     if (role !== "ADMIN") {
         return <p>Access Denied</p>; // ✅ Frontend correctly restricts access
     }
